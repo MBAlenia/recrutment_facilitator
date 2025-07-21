@@ -54,14 +54,14 @@ services:
     networks:
       - app-network
     command: npm run dev
-labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-frontend.rule=Host(`${DOMAIN}`)"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-frontend.entrypoints=websecure"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-frontend.tls.certresolver=myresolver"
-      - "traefik.http.services.${COMPOSE_PROJECT_NAME}-frontend.loadbalancer.server.port=${FRONTEND_PORT}"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.entrypoints=web"
-      - "traefik.http.services.${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=${FRONTEND_PORT}"
+    labels:
+          - "traefik.enable=true"
+          - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-frontend.rule=Host(`${DOMAIN}`)"
+          - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-frontend.entrypoints=websecure"
+          - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-frontend.tls.certresolver=myresolver"
+          - "traefik.http.services.${COMPOSE_PROJECT_NAME}-frontend.loadbalancer.server.port=${FRONTEND_PORT}"
+          - "traefik.http.routers.${COMPOSE_PROJECT_NAME}.entrypoints=web"
+          - "traefik.http.services.${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=${FRONTEND_PORT}"
 
   traefik:
     image: traefik:v2.10

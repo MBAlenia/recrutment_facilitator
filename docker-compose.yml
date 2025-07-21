@@ -56,7 +56,7 @@ services:
     command: npm run dev
 labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-frontend.rule=Host('academy.alenia.io')"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-frontend.rule=Host(`${DOMAIN}`)"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-frontend.entrypoints=websecure"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-frontend.tls.certresolver=myresolver"
       - "traefik.http.services.${COMPOSE_PROJECT_NAME}-frontend.loadbalancer.server.port=${FRONTEND_PORT}"
